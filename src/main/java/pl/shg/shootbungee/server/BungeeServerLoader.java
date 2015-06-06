@@ -45,8 +45,7 @@ public class BungeeServerLoader {
                     this.getFile().getString("arcade." + id + ".address", "localhost:" + TargetServer.PORT),
                     id,
                     this.getFile().getString("arcade." + id + ".name", "Serwer Arcade"),
-//                    this.getFile().getBoolean("arcade." + id + ".public", false)
-                    true
+                    this.getFile().getBoolean("arcade." + id + ".public", false)
             ));
         }
     }
@@ -60,7 +59,7 @@ public class BungeeServerLoader {
         for (String id : this.getFile().getSection("minecraft").getKeys()) {
             Servers.addServer(new MinecraftTarget(
                     this.getFile().getString("minecraft." + id + ".address", "localhost:" + TargetServer.PORT),
-                    null, // icon
+                    null, // we can't load the icon
                     id,
                     this.getFile().getString("minecraft." + id + ".name", "Serwer Minecraft"),
                     this.getFile().getBoolean("minecraft." + id + ".public", false)
