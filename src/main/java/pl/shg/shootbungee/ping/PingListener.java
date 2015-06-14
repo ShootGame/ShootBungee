@@ -21,6 +21,8 @@ import pl.shg.shootbungee.motd.MOTDHandler;
  * @author Aleksander
  */
 public class PingListener implements Listener {
+    private static int online = 0;
+    
     @EventHandler
     public void onProxyPing(ProxyPingEvent e) {
         e.setResponse(this.getResponse(e.getResponse()));
@@ -32,8 +34,6 @@ public class PingListener implements Listener {
     
     private Players getPlayers() {
         int slots = ProxyServer.getInstance().getConfig().getPlayerLimit();
-        int online = ProxyServer.getInstance().getOnlineCount();
-        
         return new Players(slots, online, PlayerInfoState.createFor());
     }
     
@@ -48,5 +48,9 @@ public class PingListener implements Listener {
     
     private Favicon getFavicon() {
         return ProxyServer.getInstance().getConfig().getFaviconObject();
+    }
+    
+    public static void setOnlineCount(int count) {
+        PingListener.online = count;
     }
 }

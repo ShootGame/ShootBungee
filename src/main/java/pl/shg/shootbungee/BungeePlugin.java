@@ -6,7 +6,9 @@
  */
 package pl.shg.shootbungee;
 
+import java.io.File;
 import net.md_5.bungee.api.plugin.Plugin;
+import pl.shg.commons.bungee.BungeeCommons;
 import pl.shg.shootbungee.component.Component;
 import pl.shg.shootbungee.server.ServerPingTask;
 
@@ -21,6 +23,7 @@ public class BungeePlugin extends Plugin {
     public void onEnable() {
         plugin = this;
         
+        BungeeCommons.initialize(this, new File("/root/arcade/translations"));
         Component.createAll();
     }
     

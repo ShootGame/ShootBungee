@@ -6,6 +6,7 @@
  */
 package pl.shg.shootbungee.motd;
 
+import pl.shg.shootbungee.Language;
 import pl.shg.shootbungee.editor.Editor;
 
 /**
@@ -20,7 +21,7 @@ public class StaticMOTD extends AbstractMOTD {
     
     @Override
     public boolean edit(Editor editor, String edit) {
-        editor.sendError("Nie mozna edytowac statycznego MOTD.");
+        editor.sendError(Language.MOTD_STATIC_EDIT.get(null));
         return false;
     }
     

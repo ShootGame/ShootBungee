@@ -8,6 +8,8 @@ package pl.shg.shootbungee.hub;
 
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.config.ServerInfo;
+import pl.shg.commons.users.BungeeUser;
+import pl.shg.shootbungee.Language;
 
 /**
  *
@@ -16,8 +18,8 @@ import net.md_5.bungee.api.config.ServerInfo;
 public class HubServer {
     public static final String ID = "hub";
     
-    public static String getDisplayName() {
-        return "Lobby";
+    public static String getDisplayName(BungeeUser user) {
+        return Language.HUB_DISPLAY.get(user);
     }
     
     public static ServerInfo getServerInfo() {

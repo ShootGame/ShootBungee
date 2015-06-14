@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import net.md_5.bungee.api.ProxyServer;
 import pl.shg.commons.server.Servers;
 import pl.shg.commons.server.TargetServer;
+import pl.shg.shootbungee.ping.PingListener;
 import pl.shg.shootbungee.ping.SimpleInfoState;
 
 /**
@@ -38,6 +39,7 @@ public class ServerPingTask implements Runnable {
         for (TargetServer server : Servers.getServers()) {
             server.ping();
         }
+        PingListener.setOnlineCount(Servers.getOnlineCount());
         ProxyServer.getInstance().getPluginManager().callEvent(new ServersPingedEvent());
         
         SimpleInfoState.updateCustomState();

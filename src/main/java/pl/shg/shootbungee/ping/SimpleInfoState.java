@@ -25,7 +25,7 @@ public class SimpleInfoState {
     public SimpleInfoState() {
         this.header();
         for (TargetServer target : Servers.getServers()) {
-            if (target.isPublic() && target instanceof ArcadeTarget || target instanceof MinecraftTarget) {
+            if (target.isPublic() && (target instanceof ArcadeTarget || target instanceof MinecraftTarget)) {
                 this.list.add(this.getServer(target));
             }
         }
