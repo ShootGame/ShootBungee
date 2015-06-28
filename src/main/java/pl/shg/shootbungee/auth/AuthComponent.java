@@ -14,7 +14,7 @@ import pl.shg.shootbungee.component.Component;
  */
 public class AuthComponent extends Component {
     protected AuthComponent() {
-        this.getProxy().getPluginManager().registerListener(this.getPlugin(), new ServerConnectListener());
+        this.getProxy().getPluginManager().registerListener(this.getPlugin(), new CommandListener());
     }
     
     public static Component create() {

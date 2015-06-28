@@ -6,6 +6,12 @@
  */
 package pl.shg.shootbungee.motd;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.jdom2.JDOMException;
+import pl.shg.commons.command.BungeeCommandBase;
 import pl.shg.shootbungee.component.Component;
 
 /**
@@ -13,11 +19,22 @@ import pl.shg.shootbungee.component.Component;
  * @author Aleksander
  */
 public class MOTDComponent extends Component {
-    protected MOTDComponent() {
-        // TODO load custom MOTD?
+    protected MOTDComponent(File file) {
+        MOTDHandler.setBase(new MOTDBase(file));
+        BungeeCommandBase.register(this.getPlugin(), MOTDCommands.class);
+        
+        try {
+            if (MOTDHandler.getBase().reload()) {
+                
+            } else {
+                
+            }
+        } catch (IOException | JDOMException ex) {
+            Logger.getLogger(MOTDComponent.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public static Component create() {
-        return new MOTDComponent();
+        return new MOTDComponent(new File("." + File.separator + "motd.xml"));
     }
 }

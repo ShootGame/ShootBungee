@@ -6,6 +6,7 @@
  */
 package pl.shg.shootbungee.hub;
 
+import pl.shg.commons.command.BungeeCommandBase;
 import pl.shg.shootbungee.component.Component;
 
 /**
@@ -14,7 +15,7 @@ import pl.shg.shootbungee.component.Component;
  */
 public class HubComponent extends Component {
     protected HubComponent() {
-        this.getProxy().getPluginManager().registerCommand(this.getPlugin(), new HubCommand());
+        BungeeCommandBase.register(this.getPlugin(), HubCommand.class);
     }
     
     public static Component create() {

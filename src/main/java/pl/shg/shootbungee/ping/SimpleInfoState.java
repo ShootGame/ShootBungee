@@ -33,7 +33,7 @@ public class SimpleInfoState {
     
     private void header() {
         String line = ChatColor.DARK_PURPLE + this.getLine(10);
-        this.list.add(line + ChatColor.DARK_RED + ChatColor.BOLD + " Shoot" + ChatColor.GRAY + ChatColor.BOLD + "Game" + line);
+        this.list.add(line + ChatColor.DARK_RED + ChatColor.BOLD + " Shoot" + ChatColor.GRAY + ChatColor.BOLD + "Game " + line);
     }
     
     private String getLine(int length) {
@@ -42,7 +42,7 @@ public class SimpleInfoState {
             builder.append("-");
         }
         
-        return ChatColor.DARK_PURPLE + " " + ChatColor.STRIKETHROUGH + builder.toString() + ChatColor.RESET;
+        return ChatColor.DARK_PURPLE + ChatColor.STRIKETHROUGH.toString() + builder.toString() + ChatColor.RESET;
     }
     
     private String getServer(TargetServer target) {

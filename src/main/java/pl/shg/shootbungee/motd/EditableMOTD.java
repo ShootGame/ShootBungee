@@ -9,24 +9,28 @@ package pl.shg.shootbungee.motd;
 import java.util.List;
 import pl.shg.shootbungee.editor.Editor;
 import pl.shg.shootbungee.motd.xml.XMLLog;
-import pl.shg.shootbungee.motd.xml.XMLObject;
 
 /**
  *
  * @author Aleksander
  */
-public abstract class AbstractMOTD extends XMLObject {
-    public AbstractMOTD(String id, String type) {
-        super(id, type);
+public class EditableMOTD extends AbstractMOTD {
+    public EditableMOTD(String id, List<XMLLog> logs) {
+        super(id, logs, "Editable");
     }
     
-    public AbstractMOTD(String id, List<XMLLog> logs, String type) {
-        super(id, logs, type);
+    @Override
+    public boolean edit(Editor editor, String edit) {
+        if (edit == null || edit.equals("%rm")) {
+            this.setValue("");
+        } else {
+            this.setValue("");
+        }
+        return true;
     }
     
-    public abstract boolean edit(Editor editor, String edit);
-    
+    @Override
     public boolean isEditable() {
-        return false;
+        return true;
     }
 }

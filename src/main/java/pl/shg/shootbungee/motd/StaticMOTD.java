@@ -6,40 +6,24 @@
  */
 package pl.shg.shootbungee.motd;
 
+import java.util.List;
+import pl.shg.commons.users.BungeeConsoleUser;
 import pl.shg.shootbungee.Language;
 import pl.shg.shootbungee.editor.Editor;
+import pl.shg.shootbungee.motd.xml.XMLLog;
 
 /**
  *
  * @author Aleksander
  */
 public class StaticMOTD extends AbstractMOTD {
-    public StaticMOTD(String first, String second) {
-        this.setFirstLine(first);
-        this.setSecondLine(second);
+    public StaticMOTD(String id, List<XMLLog> logs) {
+        super(id, logs, "Static");
     }
     
     @Override
     public boolean edit(Editor editor, String edit) {
-        editor.sendError(Language.MOTD_STATIC_EDIT.get(null));
+        editor.sendError(Language.MOTD_STATIC_EDIT.get(new BungeeConsoleUser()));
         return false;
-    }
-    
-    @Override
-    public String getFirstLine() {
-        return this.first;
-    }
-    
-    @Override
-    public String getSecondLine() {
-        return this.second;
-    }
-    
-    public final void setFirstLine(String first) {
-        this.first = first;
-    }
-    
-    public final void setSecondLine(String second) {
-        this.second = second;
     }
 }
